@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>hebergement.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Filigrane fixé au fond */
+    .filigrane {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.12;
+      z-index: 0;
+      pointer-events: none;
+      width: 600px;
+      height: auto;
+      filter: grayscale(60%) contrast(120%);
+      animation: clignote-subtil 5s infinite alternate;
+    }
+
+    @keyframes clignote-subtil {
+      from { opacity: 0.10; }
+      to   { opacity: 0.15; }
+    }
+
+    @media (max-width: 768px) {
+      .filigrane {
+        width: 300px;
+        opacity: 0.15;
+      }
+    }
+
+    /* Ruban et menu animé */
+    .header-wrapper {
+      background-color: #4a6eff;
+      padding: 40px 20px 0 20px;
+    }
+
+    .header-title {
+      background-color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-title h1 {
+      font-size: 36px;
+      color: #333;
+      margin: 0;
+    }
+
+    #navbar-animmenu {
+      background: #4a6eff;
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 10px 0;
+    }
+
+    #navbar-animmenu .hori-selector {
+      position: absolute;
+      height: 100%;
+      top: 10px;
+      left: 0;
+      background-color: #fff;
+      border-radius: 15px 15px 0 0;
+      transition: all 0.4s ease-in-out;
+      z-index: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    #navbar-animmenu ul {
+      display: flex;
+      justify-content: space-around;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    #navbar-animmenu ul li {
+      list-style-type: none;
+      flex: 1;
+      text-align: center;
+    }
+
+    #navbar-animmenu ul li a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+      font-size: 16px;
+      transition: color 0.3s ease-in-out;
+    }
+
+    #navbar-animmenu ul li.active a {
+      color: #4a6eff;
+    }
+
+    /* Section principale */
+    .content {
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hotel {
+      background-color: rgba(255, 255, 255, 0.92);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1.5s ease both;
+    }
+
+    .hotel img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .prix {
+      font-weight: bold;
+      color: #007BFF;
+    }
+
+    .btn-voir-plus {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .btn-voir-plus:hover {
+      background-color: #0056b3;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="logo.jpg" alt="Filigrane" class="filigrane">
+
+  <!-- En-tête -->
+  <div class="header-wrapper">
+    <div class="header-title">
+      <h1>Bienvenu dans la ville de SIA</h1>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <div id="navbar-animmenu">
+    <div class="hori-selector"></div>
+    <ul class="main-navbar">
+      <li><a href="accueille.html"><i class="fas fa-home"></i> MENU</a></li>
+      <li><a href="patrimoine.html"><i class="fas fa-landmark"></i> PATRIMOINE</a></li>
+      <li class="active"><a href="#"><i class="fas fa-hotel"></i> HÉBERGEMENT</a></li>
+      <li><a href="Galeries.html"><i class="fas fa-images"></i> GALERIE</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="content">
+    <!-- Hôtel 1 -->
+    <div class="hotel">
+      <h2>Hôtel-auberge</h2>
+      <img src="x8.jpg" alt="hotel-auberge">
+      <p>Chambres modernes avec vue sur le jardin. Accès au spa et au restaurant gastronomique.</p>
+      <p class="prix">À partir de 85€ par nuit</p>
+      <a class="btn-voir-plus" href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/oberge.html">Voir plus</a>
+    </div>
+
+    <!-- Hôtel 2 -->
+    <div class="hotel">
+      <h2>Hôtel Sissiman</h2>
+      <img src="E.jpg" alt="Hôtel Sissiman">
+      <p>Idéalement situé près des commerces et musées. Parfait pour les courts séjours.</p>
+      <p class="prix">À partir de 65€ par nuit</p>
+      <a class="btn-voir-plus" href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/sissiman.html">Voir plus</a>
+    </div>
+
+    <!-- Hôtel 3 -->
+    <div class="hotel">
+      <h2>Hôtel-villa-rose</h2>
+      <img src="x1.jpg" alt="Hôtel-villa-rose">
+      <p>Prestige 5 étoiles avec piscine intérieure, suite présidentielle et service premium.</p>
+      <p class="prix">À partir de 100€ par nuit</p>
+      <a class="btn-voir-plus" href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/hotel%20villa%20rosa.html">Voir plus</a>
+    </div>
+
+  <!-- Script d’animation menu -->
+  <script>
+    $(document).ready(function () {
+      function animateSelector() {
+        var activeItem = $('#navbar-animmenu .active');
+        var selector = $('.hori-selector');
+        var itemPos = activeItem.position();
+        var itemWidth = activeItem.innerWidth();
+        selector.css({
+          left: itemPos.left + "px",
+          width: itemWidth + "px"
+        });
+      }
+
+      setTimeout(animateSelector, 100);
+
+      $("#navbar-animmenu").on("click", "li", function () {
+        $('#navbar-animmenu ul li').removeClass("active");
+        $(this).addClass("active");
+        animateSelector();
+      });
+
+      $(window).on("resize", function () {
+        setTimeout(animateSelector, 300);
+      });
+    });
+  </script>
+
+</body>
+</html>
