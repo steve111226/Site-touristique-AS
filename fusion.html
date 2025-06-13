@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ville de Bobo-Dioulasso</title>
+  <style>
+
+    /* Thème général */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #333;
+      overflow-x: hidden;
+
+    }
+
+ <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Filigrane fixé au fond */
+    .filigrane {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.12;
+      z-index: 0;
+      pointer-events: none;
+      width: 600px;
+      height: auto;
+      filter: grayscale(60%) contrast(120%);
+      animation: clignote-subtil 5s infinite alternate;
+    }
+
+    @keyframes clignote-subtil {
+      from { opacity: 0.10; }
+      to   { opacity: 0.15; }
+    }
+
+    @media (max-width: 768px) {
+      .filigrane {
+        width: 300px;
+        opacity: 0.15;
+      }
+    }
+
+    /* Ruban et menu animé */
+    .header-wrapper {
+      background-color: #4a6eff;
+      padding: 40px 20px 0 20px;
+    }
+
+    .header-title {
+      background-color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-title h1 {
+      font-size: 36px;
+      color: #333;
+      margin: 0;
+    }
+
+    #navbar-animmenu {
+      background: #4a6eff;
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 10px 0;
+    }
+
+    #navbar-animmenu .hori-selector {
+      position: absolute;
+      height: 100%;
+      top: 10px;
+      left: 0;
+      background-color: #fff;
+      border-radius: 15px 15px 0 0;
+      transition: all 0.4s ease-in-out;
+      z-index: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    #navbar-animmenu ul {
+      display: flex;
+      justify-content: space-around;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    #navbar-animmenu ul li {
+      list-style-type: none;
+      flex: 1;
+      text-align: center;
+    }
+
+    #navbar-animmenu ul li a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+      font-size: 16px;
+      transition: color 0.3s ease-in-out;
+    }
+
+    #navbar-animmenu ul li.active a {
+      color: #4a6eff;
+    }
+
+    /* Filigrane logo centré fixe */
+    #watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.07;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      width: 300px;
+      height: auto;
+    }
+
+    /* Conteneur principal avec deux colonnes */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 80px auto 40px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main-content {
+      flex: 3;
+      margin-right: 30px;
+    }
+
+    .sidebar {
+      flex: 1.2;
+      background: #f0f8ff;
+      border-left: 3px solid #007BFF;
+      padding: 20px;
+      font-weight: bold;
+      color: #0056b3;
+      font-size: 1.1em;
+      line-height: 1.5;
+      height: fit-content;
+    }
+
+    .sidebar h2 {
+      color: #004085;
+      margin-top: 0;
+      text-align: center;
+      font-size: 1.4em;
+    }
+
+    .texte-section {
+      margin-bottom: 40px;
+    }
+
+    .image-space {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .image-space img {
+      cursor: pointer;
+      width: calc(25% - 7.5px);
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .image-space img:active {
+      transform: scale(1.15);
+      transition: transform 0.2s ease;
+      z-index: 10;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      border: 3px solid #007BFF;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #f8f9fa;
+      color: #666;
+      font-size: 0.9em;
+      border-top: 1px solid #ddd;
+    }
+
+    #navbar-animmenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #0056b3;
+      z-index: 100;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    #navbar-animmenu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    #navbar-animmenu ul li {
+      padding: 15px 25px;
+      color: white;
+      cursor: pointer;
+      position: relative;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    #navbar-animmenu ul li:hover {
+      background-color: #004085;
+    }
+
+    #navbar-animmenu ul li.active {
+      color: #ffd700;
+    }
+
+    /* .hori-selector supprimé */
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <img id="watermark" src="ton-logo.png" alt="Logo filigrane" />
+
+  
+  <div class="container">
+    <div class="main-content">
+      <div class="texte-section">
+        <h2>Présentation de la ville</h2>
+        <p>Si vous cherchez une ville <strong>pleine de charme, de couleurs et de rythmes</strong>, alors ouvrez grand les bras : <strong>Bobo-Dioulasso</strong> vous attend avec le sourire !</p>
+      </div>
+      <div class="texte-section">
+        <p>Située dans le <strong>sud-ouest du Burkina Faso</strong>, à environ <strong>360 kilomètres de Ouagadougou</strong>, Bobo (comme l’appellent affectueusement ses habitants) est bien plus qu’une simple ville : c’est <strong>le cœur battant de la culture burkinabè</strong>, une ville joyeuse, authentique, et profondément attachante.</p>
+        <div class="image-space">
+          <img src="ss.jpg" alt="">
+          <img src="imm.jpg" alt="">
+          <img src="iji.jpg" alt="">
+          <img src="sss.jpg" alt="">
+        </div>
+      </div>
+      <div class="texte-section">
+        <p>Nichée dans la <strong>région verdoyante des Hauts-Bassins</strong>, Bobo-Dioulasso s’étend sur environ <strong>136 km²</strong>, à une altitude d’environ <strong>445 mètres</strong>. Elle profite d’un climat agréable et d’un environnement naturel paisible, entre rivières, arbres géants et terres rouges. Un vrai petit bijou !</p>
+        <div class="image-space">
+          <img src="imao.jpg" alt="">
+          <img src="shh.jpg" alt="">
+          <img src="sa.jpg" alt="">
+          <img src="ii.jpg" alt="">
+        </div>
+      </div>
+      <div class="texte-section">
+        <p>À Bobo, chaque coin de rue raconte une histoire. Ici, les traditions ne dorment jamais : elles <strong>dansent, chantent, sculptent</strong> et sourient à tous ceux qui veulent les découvrir. Berceau de la <strong>musique traditionnelle</strong>, la ville résonne au son des balafons, des tambours et des voix puissantes des griots. Les festivals comme le <strong>FESTIBO</strong> vous feront vibrer au rythme des masques et des danses !</p>
+        <div class="image-space">
+          <img src="hu.jpg" alt="">
+          <img src="ho.jpg" alt="">
+          <img src="ill.jpg" alt="">
+          <img src="pi.jpg" alt="">
+        </div>
+      </div>
+      <div class="texte-section">
+        <p>La ville regorge de sites magnifiques à visiter : la <strong>Grande Mosquée</strong>, le <strong>vieux quartier de Kibidwé</strong>, le <strong>musée de la ville</strong>, <strong>la Guinguette</strong> ou encore le <strong>village de Koumi</strong> avec ses peintures murales traditionnelles. Chaque site vous plonge dans une nouvelle ambiance.</p>
+        <div class="image-space">
+          <img src="pe.jpg" alt="">
+          <img src="sp.jpg" alt="">
+          <img src="ima.jpg" alt="">
+          <img src="omi.jpg" alt="">
+        </div>
+      </div>
+      <div class="texte-section">
+        <p>Bobo, c’est aussi une ville accueillante et bien équipée. Des <strong>hôtels chaleureux</strong>, une <strong>gastronomie locale</strong>, des <strong>guides passionnés</strong>, et même un <strong>aéroport international</strong> pour venir facilement.</p>
+        <div class="image-space">
+          <img src="E.jpg" alt="">
+          <img src="O.jpg" alt="">
+          <img src="ip.jpg" alt="">
+          <img src="M.jpg" alt="">
+        </div>
+      </div>
+      <div class="texte-section">
+        <p>Que vous soyez en famille, en couple ou entre amis, une chose est sûre : <strong>Bobo-Dioulasso vous marquera à jamais</strong>. Entre découvertes, sourires et émotions, vous repartirez le cœur rempli de joie.<br><br>Alors, prêt(e) pour l’aventure ?<br><strong>Bobo vous ouvre les bras. Et ici, chaque sourire est un trésor.</strong></p>
+        <div class="image-space">
+          <img src="im.jpg" alt="">
+          <img src="imp.jpg" alt="">
+          <img src="iv.jpg" alt="">
+          <img src="imag.jpg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <h2>Les Ethnies Rencontrées</h2>
+      <p>Oh là là, préparez-vous à découvrir un vrai melting-pot culturel ! À Bobo-Dioulasso, vous rencontrerez avec joie les groupes ethniques fascinants comme les Bobo, les Dioula, les Sénoufo, les Mossi et bien d’autres encore.</p>
+      <p>Chaque ethnie apporte sa couleur, ses traditions, ses danses, ses costumes éclatants et sa musique entraînante qui fait vibrer la ville au rythme de la vie.</p>
+      <p>Vous serez émerveillé par la richesse culturelle et la convivialité incroyable de ces peuples, qui rendent Bobo-Dioulasso unique et inoubliable. Une expérience authentique et chaleureuse vous attend à chaque coin de rue !</p>
+      <p>Alors, laissez-vous transporter par cette diversité culturelle exaltante qui fait tout le charme de la ville. Ici, chaque rencontre est une fête, et chaque sourire un pont entre les cultures.</p>
+    </div>
+  </div>
+<!-- Script d’animation menu -->
+  <script>
+    $(document).ready(function () {
+      function animateSelector() {
+        var activeItem = $('#navbar-animmenu .active');
+        var selector = $('.hori-selector');
+        var itemPos = activeItem.position();
+        var itemWidth = activeItem.innerWidth();
+        selector.css({
+          left: itemPos.left + "px",
+          width: itemWidth + "px"
+        });
+      }
+
+      setTimeout(animateSelector, 100);
+
+      $("#navbar-animmenu").on("click", "li", function () {
+        $('#navbar-animmenu ul li').removeClass("active");
+        $(this).addClass("active");
+        animateSelector();
+      });
+
+      $(window).on("resize", function () {
+        setTimeout(animateSelector, 300);
+      });
+    });
+  </script>
+
+</body>
+</html>
