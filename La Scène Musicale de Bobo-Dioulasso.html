@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Scène Musicale de Bobo-Dioulasso</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --main-blue: #5276ff;
+            --blue-dark: #334a99;
+            --blue-light: #6d94ff;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7fb;
+            color: #222;
+            position: relative;
+            min-height: 100vh;
+        }
+        .filigrane {
+            position: fixed;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.10;
+            z-index: 0;
+            pointer-events: none;
+            width: 480px;
+            max-width: 85vw;
+            height: auto;
+            filter: grayscale(60%) contrast(120%);
+            user-select: none;
+        }
+        @media (max-width: 900px) {.filigrane { width: 300px; }}
+        @media (max-width: 600px) {.filigrane { width: 140px; }}
+
+        header {
+            background-color: var(--main-blue);
+            color: white;
+            padding: 38px 0 24px 0;
+            text-align: center;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 18px rgba(82,118,255,0.13);
+            border-radius: 0 0 36px 36px;
+            position: relative;
+            z-index: 1;
+        }
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .header-title .highlight1 { color: #e74c3c; }
+        .header-title .highlight2 { color: #ffeb3b; }
+        .header-title .highlight3 { color: #1bc831; }
+        .header-desc {
+            font-size: 1.22rem;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+        .retour-btn {
+            display: inline-block;
+            margin-top: 23px;
+            background: var(--main-blue);
+            color: #fff;
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 7px;
+            box-shadow: 0 2px 10px rgba(82,118,255,0.08);
+            border: none;
+            text-decoration: none;
+            font-size: 1.05em;
+            transition: background 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+        .retour-btn i { margin-right: 8px }
+        .retour-btn:hover {
+            background: var(--blue-dark);
+            color: #fff;
+            transform: scale(1.06);
+        }
+        .banner-section {
+            position: relative;
+            margin-bottom: 0;
+        }
+        .banner-img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+            border-radius: 0 0 24px 24px;
+            box-shadow: 0 6px 32px rgba(82,118,255,0.07);
+        }
+        .banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(52, 76, 180, 0.37);
+            border-radius: 0 0 24px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner-overlay h2 {
+            color: #fff;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.09);
+            letter-spacing: 1.5px;
+        }
+        nav {
+            background: #e5eeff;
+            padding: 16px 0;
+            text-align: center;
+            margin-bottom: 0;
+            border-bottom: 1px solid #c2d3fc;
+        }
+        nav a {
+            margin: 0 18px;
+            text-decoration: none;
+            color: var(--main-blue);
+            font-weight: bold;
+            font-size: 1.11em;
+            transition: color 0.2s;
+            border-bottom: 2.5px solid transparent;
+            padding-bottom: 2px;
+        }
+        nav a:hover, nav a.active {
+            color: var(--blue-dark);
+            border-bottom: 2.5px solid var(--main-blue);
+        }
+        .container {
+            max-width: 980px;
+            margin: 38px auto 38px auto;
+            padding: 0 16px;
+        }
+        .section {
+            background: white;
+            padding: 26px 20px 18px 20px;
+            margin-bottom: 26px;
+            border-radius: 14px;
+            box-shadow: 0 2px 14px rgba(82,118,255,0.10);
+        }
+        h2, h3 {
+            color: var(--main-blue);
+            margin-top: 0;
+        }
+        ul {
+            margin-left: 1.1em;
+            margin-bottom: 0.5em;
+        }
+        .section img {
+            max-width: 95%;
+            border-radius: 10px;
+            margin: 15px 0 0 0;
+            box-shadow: 0 2px 10px rgba(82,118,255,0.07);
+        }
+        .perso-quote {
+            background: #eaf2ff;
+            color: #234;
+            border-left: 6px solid var(--main-blue);
+            font-style: italic;
+            padding: 13px 20px;
+            margin: 20px 0 28px 0;
+            border-radius: 8px;
+            font-size: 1.08em;
+            box-shadow: 0 2px 12px rgba(82,118,255,0.05);
+        }
+        footer {
+            background: var(--main-blue);
+            color: white;
+            text-align: center;
+            padding: 22px 0 12px 0;
+            font-size: 1.05em;
+            border-top: 1.5px solid #dbe6ff;
+            margin-top: 64px;
+            border-radius: 22px 22px 0 0;
+        }
+        @media (max-width: 800px) {
+            .banner-img { height: 180px; }
+            .container { padding: 0 4vw; }
+        }
+        @media (max-width: 500px) {
+            .banner-img { height: 95px; }
+            .header-title { font-size: 1.15rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Filigrane -->
+    <img src="logo.jpg" alt="Filigrane" class="filigrane">
+
+    <header>
+        <div class="header-title">
+            <span class="highlight1">La Scène</span>
+            <span class="highlight2">Musicale de</span>
+            <span class="highlight3">Bobo-Dioulasso</span>
+        </div>
+        <div class="header-desc">
+            Explorez la richesse musicale du cœur du Burkina Faso
+        </div>
+        <a href="patrimoine.html" class="retour-btn"><i class="fas fa-arrow-left"></i>Retour</a>
+    </header>
+    <section class="banner-section">
+        <img src="FB_IMG_1632815039020.jpg" alt="Mosquée de Dioulassoba" class="banner-img">
+        <div class="banner-overlay">
+            <h2>Scène Musicale</h2>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="perso-quote">
+            <i class="fas fa-music"></i>
+            La musique à Bobo-Dioulasso est bien plus qu'une histoire de notes : c'est un art de vivre, une énergie qui traverse les générations, un sourire partagé au coin des rues. Ici, chaque soirée est promesse de découvertes et d’émotions, chaque rythme invite à la fête et à la rencontre.
+        </div>
+
+        <section id="histoire" class="section">
+            <h3>Histoire de la musique à Bobo-Dioulasso</h3>
+            <p>
+                Bobo-Dioulasso, deuxième ville du Burkina Faso, est un véritable carrefour musical. Depuis des siècles, la musique rythme la vie quotidienne : cérémonies, mariages, veillées. Instruments traditionnels (balafon, djembé, tama) et chants ancestraux se mêlent aujourd'hui aux influences du jazz, du reggae ou du hip-hop. Cette ville est un creuset où se réinventent sans cesse les sons d’Afrique de l’Ouest.
+            </p>
+        </section>
+        <section id="styles" class="section">
+            <h3>Styles Musicaux Représentés</h3>
+            <ul>
+                <li><strong>Musique traditionnelle :</strong> Transmise de génération en génération, elle accompagne les rituels et les grands moments de la vie.</li>
+                <li><strong>Mandingue :</strong> Influencée par les peuples voisins du Mali et de la Côte d’Ivoire.</li>
+                <li><strong>Reggae africain :</strong> Porté par des artistes engagés comme Sams’K Le Jah.</li>
+                <li><strong>Afrobeat et Fusion :</strong> Rythmes africains et sonorités modernes se marient et créent la surprise.</li>
+                <li><strong>Rap et Hip-hop :</strong> Les jeunes de Bobo s’approprient ces styles pour porter leurs messages.</li>
+            </ul>
+        </section>
+        <section id="lieux" class="section">
+            <h3>Lieux Emblématiques</h3>
+            <p>
+                La scène musicale de Bobo-Dioulasso vit dans ses rues, mais aussi dans des lieux phares :
+            </p>
+            <ul>
+                <li><strong>Maison de la Culture :</strong> Concerts, expositions, ateliers et rencontres.</li>
+                <li><strong>Institut Français :</strong> Un espace d’échanges et de découvertes artistiques.</li>
+                <li><strong>Le Figuier :</strong> Bar réputé pour ses soirées live et ses jams improvisées.</li>
+                <li><strong>Place Tiefo Amoro :</strong> Le rendez-vous des grands concerts en plein air.</li>
+            </ul>
+            <img src="Culture-SNC-Faso-7.webp" alt="Vue de Bobo-Dioulasso">
+        </section>
+        <section id="artistes" class="section">
+            <h3>Artistes Locaux et Groupes Célèbres</h3>
+            <p>
+                De nombreux artistes ont fait briller Bobo bien au-delà des frontières :
+            </p>
+            <ul>
+                <li><strong>Victor Démé</strong> : Une voix inoubliable de la musique mandingue.</li>
+                <li><strong>Idak Bassavé</strong> : Interprète charismatique à l’énergie communicative.</li>
+                <li><strong>Baba Commandant</strong> : L’afrobeat à la sauce burkinabè.</li>
+                <li><strong>Faso Kombat</strong> : Un groupe mêlant rap, engagement et sonorités africaines.</li>
+            </ul>
+        </section>
+        <section id="evenements" class="section">
+            <h3>Événements Musicaux Majeurs</h3>
+            <ul>
+                <li><strong>Festival International des Musiques Traditionnelles :</strong> Les racines musicales du pays à l’honneur.</li>
+                <li><strong>Jazz à Ouaga (Bobo) :</strong> Un festival apprécié pour son ambiance unique.</li>
+                <li><strong>Festival des Masques :</strong> Où la danse et la musique s’unissent dans la magie.</li>
+            </ul>
+        </section>
+        <section id="infos" class="section">
+            <h3>Informations Pratiques</h3>
+            <p><strong>Comment venir ?</strong> Bobo est accessible par avion, train ou bus depuis Ouagadougou. L’aéroport international accueille plusieurs vols par semaine.</p>
+            <p><strong>Meilleure période :</strong> De novembre à février pour profiter des températures douces et des festivals.</p>
+            <p><strong>Où dormir ?</strong> Hôtels, auberges et logements chez l’habitant vous attendent pour tous les budgets.</p>
+            <p><strong>À goûter absolument :</strong> Riz gras, tô, brochettes et attiéké pour régaler vos papilles !</p>
+        </section>
+        <div class="perso-quote">
+            <i class="fas fa-drum"></i>
+            <b>Envie d’histoire ?</b> Le Musée Provincial du Houet vous attend : masques, outils anciens, objets rituels… Chaque salle vous fait voyager dans la mémoire vivante de la région. Un lieu précieux pour comprendre les racines de Bobo-Dioulasso.
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 - Découverte de la Scène Musicale de Bobo-Dioulasso. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

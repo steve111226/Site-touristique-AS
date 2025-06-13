@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Galerie Touristique de Bobo-Dioulasso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .filigrane {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.12;
+      z-index: 0;
+      pointer-events: none;
+      width: 600px;
+      height: auto;
+      filter: grayscale(60%) contrast(120%);
+      animation: clignote-subtil 5s infinite alternate;
+    }
+    @keyframes clignote-subtil {
+      from { opacity: 0.10; }
+      to   { opacity: 0.15; }
+    }
+    @media (max-width: 768px) {
+      .filigrane {
+        width: 300px;
+        opacity: 0.15;
+      }
+    }
+    .header-wrapper {
+      background-color: #4a6eff;
+      padding: 40px 20px 0 20px;
+    }
+    .header-title {
+      background-color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+    .header-title h1 {
+      font-size: 36px;
+      color: #333;
+      margin: 0;
+    }
+    #navbar-animmenu {
+      background: #4a6eff;
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 10px 0;
+    }
+    #navbar-animmenu .hori-selector {
+      position: absolute;
+      height: 100%;
+      top: 10px;
+      left: 0;
+      background-color: #fff;
+      border-radius: 15px 15px 0 0;
+      transition: all 0.4s ease-in-out;
+      z-index: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    #navbar-animmenu ul {
+      display: flex;
+      justify-content: space-around;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index: 1;
+    }
+    #navbar-animmenu ul li {
+      list-style-type: none;
+      flex: 1;
+      text-align: center;
+    }
+    #navbar-animmenu ul li a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+      font-size: 16px;
+      transition: color 0.3s ease-in-out;
+    }
+    #navbar-animmenu ul li.active a {
+      color: #4a6eff;
+    }
+
+    /* Section galerie */
+    .content-galerie {
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 40px auto 0 auto;
+    }
+    .page-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+    .sites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 24px;
+    }
+    .site-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+      transition: all 0.3s cubic-bezier(.4,1.7,.5,.7);
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+    }
+    .site-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    .site-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 3px solid #4a6eff;
+      background: #eee;
+    }
+    .site-info {
+      padding: 20px 15px 18px 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .site-info h3 {
+      margin: 0 0 10px 0;
+      color: #2c3e50;
+      font-size: 1.18em;
+    }
+    .site-info p {
+      color: #555;
+      margin-bottom: 10px;
+      font-size: 0.98rem;
+    }
+    .btn {
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+      margin-top: 3px;
+    }
+    .btn:hover {
+      background: #d35400;
+      transform: scale(1.07);
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      font-size: 0.99em;
+      z-index: 10;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.jpg" alt="Filigrane" class="filigrane">
+
+  <!-- En-tête -->
+  <div class="header-wrapper">
+    <div class="header-title">
+      <h1>GALERIE TOURISTIQUE DE BOBO-DIOULASSO</h1>
+    </div>
+  </div>
+
+  <!-- Navbar animée -->
+  <div id="navbar-animmenu">
+    <div class="hori-selector"></div>
+    <ul class="main-navbar">
+      <li><a href="index.html"><i class="fas fa-home"></i> ACCUEIL</a></li>
+      <li><a href="patrimoine.html"><i class="fas fa-landmark"></i> PATRIMOINE</a></li>
+      <li><a href="hebergement.html"><i class="fas fa-hotel"></i> HÉBERGEMENT</a></li>
+      <li class="active"><a href="Galeries.html"><i class="fas fa-images"></i> GALERIE</a></li>
+    </ul>
+  </div>
+
+  <section class="content-galerie">
+    <h2 class="page-title">Découvrez nos sites emblématiques</h2>
+    <div class="sites-grid">
+      <div class="site-card">
+        <a href="Gal1.html">
+          <img src="images (16).jpeg" alt="Maison Lobi" class="site-image">
+          <div class="site-info">
+            <h3>Maison Lobi</h3>
+            <p>Architecture traditionnelle des Lobi.</p>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+      <div class="site-card">
+        <a href="Gal2.html">
+          <img src="images (3).jpeg" alt="Mosquée" class="site-image">
+          <div class="site-info">
+            <h3>Grande Mosquée</h3>
+            <p>Joyau de l'architecture soudanaise.</p>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+ <div class="site-card">
+        <a href="Gal10.html">
+          <img src="La_porte_d'entrée_du_Musée_Communal_Sogossira_SANON_à_Bobo-Dioulasso.jpg" alt="musée provincial" class="site-image">
+          <div class="site-info">
+            <h3>musee provincial</h3>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+
+ <div class="site-card">
+        <a href="Gal9.html">
+          <img src=" FB_IMG_1632815039020.jpg" alt="scene musicale" class="site-image">
+          <div class="site-info">
+            <h3>La scene musicale de Bobo-Dioulasso</h3>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="site-card">
+        <a href="Gal5.html">
+          <img src="arton52.jpg" alt="Guimbi" class="site-image">
+          <div class="site-info">
+            <h3>Le mausolée de Guimbi Ouattara</h3>
+            <p>Résidence historique de la princesse.</p>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+      <div class="site-card">
+        <a href="Gal3.html">
+          <img src="P2q42nTdoJZBTk94hmpc.jpg" alt="Domes" class="site-image">
+          <div class="site-info">
+            <h3>Les Domes de Fabedougou</h3>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+      <div class="site-card">
+        <a href="Gal4.html">
+          <img src="images (8).jpeg" alt="Guimbi" class="site-image">
+          <div class="site-info">
+            <h3>Les silures sacrés de Dafra</h3>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+      <div class="site-card">
+        <a href="Gal6.html">
+          <img src="img_9192.webp" alt="Guimbi" class="site-image">
+          <div class="site-info">
+            <h3>Le vieux marché de Bobo-Dioulasso</h3>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+      <div class="site-card">
+        <a href="Gal8.html">
+          <img src="images (31).jpeg" alt="Guimbi" class="site-image">
+          <div class="site-info">
+            <h3>Les cascades de Karfiguela</h3>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+      <div class="site-card">
+        <a href="Gal7.html">
+          <img src="arton83528-c8364.jpg" alt="Guimbi" class="site-image">
+          <div class="site-info">
+            <h3>Le village artisanal de Bobo-Dioulasso</h3>
+            <span class="btn">Voir la galerie</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Galerie Touristique - Burkina Faso</p>
+  </footer>
+  <!-- Script d’animation menu -->
+  <script>
+    $(document).ready(function () {
+      function animateSelector() {
+        var activeItem = $('#navbar-animmenu .active');
+        var selector = $('#navbar-animmenu .hori-selector');
+        var itemPos = activeItem.position();
+        var itemWidth = activeItem.innerWidth();
+        selector.css({
+          left: itemPos.left + "px",
+          width: itemWidth + "px"
+        });
+      }
+      setTimeout(animateSelector, 100);
+      $("#navbar-animmenu ul li").click(function () {
+        $("#navbar-animmenu ul li").removeClass("active");
+        $(this).addClass("active");
+        animateSelector();
+      });
+      $(window).on("resize", function () {
+        setTimeout(animateSelector, 300);
+      });
+      // Pour hover (optionnel si tu veux l'effet au survol)
+      $("#navbar-animmenu ul li").hover(
+        function () {
+          var selector = $('#navbar-animmenu .hori-selector');
+          var itemPos = $(this).position();
+          var itemWidth = $(this).innerWidth();
+          selector.css({
+            left: itemPos.left + "px",
+            width: itemWidth + "px"
+          });
+        },
+        function () {
+          animateSelector();
+        }
+      );
+    });
+  </script>
+</body>
+</html>

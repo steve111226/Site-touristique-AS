@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musée Provincial du Houet - Bobo-Dioulasso</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --main-blue: #a7cbff;   /* Bleu très clair esprit galerie */
+            --blue-dark: #5276ff;
+            --blue-light: #eaf2ff;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7fb;
+            color: #222;
+            position: relative;
+            min-height: 100vh;
+        }
+        .filigrane {
+            position: fixed;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.10;
+            z-index: 0;
+            pointer-events: none;
+            width: 500px;
+            max-width: 85vw;
+            height: auto;
+            filter: grayscale(60%) contrast(120%);
+            user-select: none;
+        }
+        @media (max-width: 900px) {.filigrane { width: 300px; }}
+        @media (max-width: 600px) {.filigrane { width: 140px; }}
+
+        header {
+            background-color: var(--main-blue); /* Retour au bleu clair */
+            color: #234;
+            padding: 40px 0 26px 0;
+            text-align: center;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 18px rgba(145,186,255,0.13);
+            border-radius: 0 0 36px 36px;
+            position: relative;
+            z-index: 1;
+        }
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .header-title .highlight1 { color: #e74c3c; }
+        .header-title .highlight2 { color: #ffeb3b; }
+        .header-title .highlight3 { color: #1bc831; }
+        .header-desc {
+            font-size: 1.18rem;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+        .retour-btn {
+            position: absolute;
+            top: 18px;
+            left: 25px;
+            background: #fff;
+            color: var(--blue-dark);
+            font-weight: bold;
+            padding: 8px 19px 9px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(82,118,255,0.10);
+            border: none;
+            text-decoration: none;
+            font-size: 1.07em;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            cursor: pointer;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+        }
+        .retour-btn i { margin-right: 7px; font-size: 1.1em; }
+        .retour-btn:hover {
+            background: var(--blue-dark);
+            color: #fff;
+            transform: scale(1.06);
+        }
+        .banner-section {
+            position: relative;
+            margin-bottom: 0;
+        }
+        .banner-img {
+            width: 100%;
+            height: 310px;
+            object-fit: cover;
+            display: block;
+            border-radius: 0 0 24px 24px;
+            box-shadow: 0 6px 32px rgba(145,186,255,0.08);
+        }
+        .banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(145,186,255, 0.18);
+            border-radius: 0 0 24px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner-overlay h2 {
+            color: #234;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(255,255,255,0.16);
+            letter-spacing: 1.5px;
+        }
+        nav {
+            background: #eaf2ff;
+            padding: 14px 0 13px 0;
+            text-align: center;
+            margin-bottom: 0;
+            border-bottom: 1px solid #c2d3fc;
+        }
+        nav a {
+            margin: 0 18px;
+            text-decoration: none;
+            color: var(--blue-dark);
+            font-weight: bold;
+            font-size: 1.11em;
+            transition: color 0.2s;
+            border-bottom: 2.5px solid transparent;
+            padding-bottom: 2px;
+        }
+        nav a:hover, nav a.active {
+            color: var(--main-blue);
+            border-bottom: 2.5px solid var(--main-blue);
+        }
+        .container {
+            max-width: 980px;
+            margin: 38px auto 38px auto;
+            padding: 0 16px;
+        }
+        .section {
+            background: white;
+            padding: 26px 20px 18px 20px;
+            margin-bottom: 26px;
+            border-radius: 14px;
+            box-shadow: 0 2px 14px rgba(145,186,255,0.10);
+        }
+        h2, h3 {
+            color: var(--blue-dark);
+            margin-top: 0;
+        }
+        ul, ol {
+            margin-left: 1.1em;
+            margin-bottom: 0.5em;
+        }
+        .section img {
+            max-width: 95%;
+            border-radius: 10px;
+            margin: 15px 0 0 0;
+            box-shadow: 0 2px 10px rgba(145,186,255,0.07);
+        }
+        .perso-quote {
+            background: #eaf2ff;
+            color: #234;
+            border-left: 6px solid var(--main-blue);
+            font-style: italic;
+            padding: 13px 20px;
+            margin: 20px 0 28px 0;
+            border-radius: 8px;
+            font-size: 1.08em;
+            box-shadow: 0 2px 12px rgba(145,186,255,0.05);
+        }
+        footer {
+            background: var(--main-blue);
+            color: #234;
+            text-align: center;
+            padding: 22px 0 12px 0;
+            font-size: 1.05em;
+            border-top: 1.5px solid #dbe6ff;
+            margin-top: 64px;
+            border-radius: 22px 22px 0 0;
+        }
+        @media (max-width: 800px) {
+            .banner-img { height: 150px; }
+            .container { padding: 0 4vw; }
+            .retour-btn { left: 8px; top: 10px; }
+        }
+        @media (max-width: 500px) {
+            .banner-img { height: 80px; }
+            .header-title { font-size: 1.15rem; }
+            .retour-btn { font-size: 0.98em; padding: 7px 12px 8px 11px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Filigrane -->
+    <img src="logo.jpg" alt="Filigrane" class="filigrane">
+
+    <header>
+        <a href="patrimoine.html" class="retour-btn"><i class="fas fa-arrow-left"></i>Retour</a>
+        <div class="header-title">
+            <span class="highlight1">Musée</span>
+            <span class="highlight2">Provincial</span>
+            <span class="highlight3">du Houet</span>
+        </div>
+        <div class="header-desc">
+            Plongez dans l'histoire et les traditions vivantes de Bobo-Dioulasso
+        </div>
+    </header>
+    <section class="banner-section">
+        <img src="unnamed (6).jpg" alt="Entrée du Musée Provincial du Houet" class="banner-img">
+        <div class="banner-overlay">
+            <h2>Trésor culturel de l'Ouest burkinabè</h2>
+        </div>
+    </section>
+    
+
+    <div class="container">
+        <div class="perso-quote">
+            <i class="fas fa-university"></i>
+            Ici, chaque objet, chaque salle, chaque sourire de guide est une invitation à plonger dans la mémoire et la richesse de la culture bobolaise.
+        </div>
+
+        <section id="histoire" class="section">
+            <h2>Histoire du Musée</h2>
+            <p>
+                Le Musée Provincial du Houet est un véritable témoin du temps à Bobo-Dioulasso. Fondé dans les années 1980, il a pour mission de préserver et de partager la mémoire des peuples du Houet. Installé dans une belle bâtisse coloniale, ce musée grandit grâce à la passion de ses équipes et aux dons d’habitants pour offrir à chaque visiteur un voyage authentique dans l’histoire de la région.
+            </p>
+        </section>
+
+        <section id="collections" class="section">
+            <h2>Collections et Trésors du Musée</h2>
+            <p>
+                Explorez une collection qui fait briller la diversité du Houet :
+            </p>
+            <ul>
+                <li><strong>Masques et fétiches :</strong> Objets rituels, témoins des initiations et croyances ancestrales.</li>
+                <li><strong>Objets quotidiens :</strong> Poteries, outils agricoles, instruments de cuisine, reflets de la vie de tous les jours.</li>
+                <li><strong>Objets sonores :</strong> Tamas, balafons, calebasses musicales, flûtes en bois… la musique comme fil conducteur de la culture locale.</li>
+                <li><strong>Photos et archives :</strong> Plongez dans le Bobo d’autrefois grâce à des clichés et documents uniques.</li>
+                <li><strong>Expositions temporaires :</strong> La créativité contemporaine et la jeunesse artistique y sont aussi à l’honneur.</li>
+            </ul>
+            <img src="collection-musee.jpg" alt="Objets de la collection du musée">
+        </section>
+
+        <section id="architecture" class="section">
+            <h2>Architecture et Environnement</h2>
+            <p>
+                Le musée occupe une grande maison en banco, typique du style colonial, entourée d’arcades et d’un jardin apaisant. L’ambiance y est propice à la flânerie et à la découverte : sculptures, cases traditionnelles et coins ombragés vous invitent à savourer chaque instant.
+            </p>
+            <img src="architecture-musee.jpg" alt="Architecture coloniale du musée">
+        </section>
+
+        <section id="visite" class="section">
+            <h2>Parcours de Visite</h2>
+            <p>
+                Le parcours du musée est pensé pour petits et grands curieux :
+            </p>
+            <ol>
+                <li><strong>Panneaux d’introduction</strong> et explications multilingues pour bien commencer la visite.</li>
+                <li><strong>Salles thématiques</strong> : ethnologie, artisanat, musique, spiritualité… un vrai tour d’horizon de la culture locale.</li>
+                <li><strong>Espaces interactifs</strong> avec jeux et supports audio-visuels pour s’amuser et apprendre.</li>
+                <li><strong>Balade dans le jardin</strong> pour découvrir des œuvres et prendre l’air.</li>
+                <li><strong>Boutique culturelle</strong> pour repartir avec un souvenir authentique de Bobo-Dioulasso.</li>
+            </ol>
+            <img src="visite-musee.jpg" alt="Visiteurs au musée">
+        </section>
+
+        <section id="evenements" class="section">
+            <h2>Événements et Activités</h2>
+            <p>
+                Tout au long de l’année, le musée s’anime :
+            </p>
+            <ul>
+                <li><strong>Conférences</strong> sur l’histoire, les peuples, les coutumes.</li>
+                <li><strong>Ateliers</strong> : fabrication de masques, contes, musique, danse pour tous les âges.</li>
+                <li><strong>Expositions temporaires</strong> de jeunes artistes burkinabè.</li>
+                <li><strong>Soirées cinéma</strong> et projections de documentaires pour s’évader autrement.</li>
+            </ul>
+            <img src="evenements-musee.jpg" alt="Événement culturel au musée">
+        </section>
+
+        <section id="infos" class="section">
+            <h2>Informations Pratiques</h2>
+            <p><b>Horaires</b> : mardi - dimanche, 09h à 17h (fermé le lundi)</p>
+            <p><b>Tarifs</b> : Adulte 1000 FCFA | Étudiant 500 FCFA | Enfants -12 ans gratuit</p>
+            <p><b>Adresse</b> : Quartier Centre-ville, Bobo-Dioulasso. Accessible en taxi, moto ou à pied.</p>
+            <p><b>Contact</b> : +226 20 97 00 00 | museehouet@culture.bf</p>
+            <img src="infos-musee.jpg" alt="Entrée du musée et infos pratiques">
+        </section>
+        <div class="perso-quote">
+            <i class="fas fa-child"></i>
+            <b>Conseil d’ami :</b> Laissez-vous porter par la passion des guides, prenez le temps de savourer chaque objet, chaque histoire… et repartez avec le sourire, le cœur grand ouvert sur la richesse de Bobo-Dioulasso !
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 - Musée Provincial du Houet, Bobo-Dioulasso. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

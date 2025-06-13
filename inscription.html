@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Réservation d'hôtel</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f0f2f5;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Filigrane centré fixe */
+    .watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+      user-select: none;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .watermark svg {
+      width: 100%;
+      height: 100%;
+      fill: #007bff;
+    }
+
+    .container {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.85); /* semi-transparent blanc */
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      color: #333;
+      position: relative;
+      z-index: 1; /* au-dessus du filigrane */
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+    }
+    h1 {
+      margin-bottom: 25px;
+      font-weight: 700;
+      text-align: center;
+      color: #222;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      color: #444;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      color: #222;
+    }
+    input:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 8px rgba(0,123,255,0.4);
+      border-color: #007bff;
+      background: #fff;
+    }
+    input[type="submit"] {
+      background: #007bff;
+      color: white;
+      font-weight: 700;
+      margin-top: 25px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s ease;
+      border-radius: 8px;
+    }
+    input[type="submit"]:hover:not(:disabled) {
+      background: #0056b3;
+    }
+    input[type="submit"]:disabled {
+      background: #999;
+      cursor: default;
+    }
+    .loader {
+      border: 4px solid rgba(0, 123, 255, 0.3);
+      border-top: 4px solid #007bff;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      animation: spin 1s linear infinite;
+      display: none;
+      position: absolute;
+      right: 40px;
+      top: 32px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    .success-message {
+      background: #d4edda;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 20px;
+      color: #155724;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="watermark" aria-hidden="true">
+    <!-- Exemple SVG logo simple -->
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" stroke="#007bff" stroke-width="4" fill="none"/>
+      <text x="32" y="38" font-size="20" font-family="Arial" fill="#007bff" text-anchor="middle" font-weight="bold">LOGO</text>
+    </svg>
+  </div>
+
+  <div class="container">
+    <h1>Réservez votre chambre</h1>
+
+    <form id="formReservation" novalidate>
+      <label for="nom">Nom complet :</label>
+      <input type="text" id="nom" required autocomplete="name" />
+
+      <label for="email">Email :</label>
+      <input type="email" id="email" required autocomplete="email" />
+
+      <label for="arrivee">Date d'arrivée :</label>
+      <input type="date" id="arrivee" required />
+
+      <label for="depart">Date de départ :</label>
+      <input type="date" id="depart" required />
+
+      <input type="submit" value="Confirmer la réservation" />
+      <div class="loader" id="loader"></div>
+    </form>
+
+    <div class="success-message" id="successMessage" role="alert" aria-live="polite">Enregistré avec succès !</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('formReservation');
+    const submitBtn = form.querySelector('input[type="submit"]');
+    const loader = document.getElementById('loader');
+    const successMessage = document.getElementById('successMessage');
+    const arrivee = document.getElementById('arrivee');
+    const depart = document.getElementById('depart');
+
+    // Préremplir la date d'aujourd'hui et demain
+    const today = new Date().toISOString().split('T')[0];
+    const tomorrowDate = new Date();
+    tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+    const tomorrow = tomorrowDate.toISOString().split('T')[0];
+
+    arrivee.value = today;
+    depart.value = tomorrow;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      loader.style.display = 'inline-block';
+      successMessage.style.display = 'none';
+
+      setTimeout(() => {
+        loader.style.display = 'none';
+        successMessage.style.display = 'block';
+
+        form.reset();
+        arrivee.value = today;
+        depart.value = tomorrow;
+
+        submitBtn.disabled = false;
+
+        setTimeout(() => {
+          history.back();
+        }, 3000);
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>

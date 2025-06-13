@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Villa Rose - Détail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f4f6fc;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    header {
+      background: #4a6eff;
+      color: white;
+      padding: 20px 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      color: #4a6eff;
+      margin-top: 40px;
+    }
+
+    .images-section {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0 20px;
+    }
+
+    .images-section img {
+      width: 32%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #ddd;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .images-section img:nth-child(2) { animation-delay: 0.2s; }
+    .images-section img:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .btn-reserver {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #4a6eff;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-reserver:hover {
+      background: #3a57d6;
+    }
+
+    /* Filigrane */
+    .filigrane {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.05;
+      z-index: 0;
+      animation: pulseOpacity 6s infinite alternate;
+      pointer-events: none;
+      max-width: 80vw;
+      width: 600px;
+    }
+
+    @keyframes pulseOpacity {
+      from { opacity: 0.03; }
+      to { opacity: 0.07; }
+    }
+
+    @media (max-width: 768px) {
+      .images-section {
+        flex-direction: column;
+      }
+
+      .images-section img {
+        width: 100%;
+      }
+
+      .filigrane {
+        width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="back-link" href="hebergement.html"><i class="fas fa-arrow-left"></i> Retour</a>
+    <h1>Villa Rose</h1>
+    <p>Bobo-Dioulasso, Burkina Faso</p>
+  </header>
+
+  <img src="logo.jpg" alt="Filigrane" class="filigrane">
+
+  <div class="container">
+
+    <h2>Description</h2>
+    <p>Villa Rose est une maison d’hôtes raffinée, calme, fleurie, à l’accueil chaleureux. Idéale pour les touristes et voyageurs en quête de sérénité et d’authenticité.</p>
+    <div class="images-section">
+      <img src="X.jpg" alt="Entrée Villa Rose">
+      <img src="x7.jpg" alt="Cour intérieure">
+      <img src="x1.jpg" alt="Façade rose">
+    </div>
+
+    <h2>Logement</h2>
+    <p>Chambres personnalisées avec salle de bain privée, literie haut de gamme, climatisation, Wi-Fi, et accès direct au jardin.</p>
+    <div class="images-section">
+      <img src="x2.jpg" alt="Chambre décorée">
+      <img src="S.jpg" alt="Salle de bain">
+      <img src="x5.jpg" alt="Terrasse privée">
+    </div>
+
+    <h2>Restauration</h2>
+    <p>Petit-déjeuner bio en terrasse. Cuisine maison à base de produits locaux, avec option végétarienne et internationale sur commande.</p>
+    <div class="images-section">
+      <img src="K.jpg" alt="Petit-déjeuner">
+      <img src="x3.jpg" alt="Plat maison">
+      <img src="M.jpg" alt="Terrasse fleurie">
+    </div>
+
+    <h2>Position géographique</h2>
+    <p>Quartier résidentiel paisible à 10 min du centre. Accès facile en taxi. Proximité du parc Houet et des marchés locaux.</p>
+    <div class="images-section">
+      <img src="x5.jpg" alt="Quartier calme">
+      <img src="c0.jpg" alt="Accès depuis centre-ville">
+      <img src="c1.jpg" alt="Plan de situation">
+    </div>
+
+    <h2>Prix</h2>
+    <p>À partir de 28 000 FCFA (~42 €) par nuit, petit-déjeuner compris.</p>
+
+    <a class="btn-reserver" href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/inscription.html">Réserver maintenant</a>
+
+    <h2>Contact</h2>
+    <p><strong>Téléphone :</strong> +226 70 00 00 00</p>
+    <p><strong>Email :</strong> contact@hotel-exemple.com</p>
+    <p>
+      <strong>Réseaux sociaux :</strong>
+      <a href="https://facebook.com/hotel-exemple" target="_blank">Facebook</a> |
+      <a href="https://twitter.com/hotel-exemple" target="_blank">Twitter</a>
+    </p>
+
+  </div>
+
+</body>
+</html>
