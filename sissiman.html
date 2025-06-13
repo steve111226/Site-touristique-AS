@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hôtel Sissiman - Détail</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6fb;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #4a6eff; /* couleur bleue cohérente */
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .btn-back {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: rgba(255,255,255,0.4);
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      position: relative;
+    }
+    h2 {
+      color: #4a6eff;
+      margin-top: 40px;
+    }
+    .images-section {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .images-section img {
+      flex: 1;
+      min-width: 30%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #ddd;
+      transition: transform 0.3s ease, opacity 0.6s ease-in;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    .images-section img:nth-child(2) { animation-delay: 0.2s; }
+    .images-section img:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .btn-reserver {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+    .btn-reserver:hover {
+      background-color: #218838;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="btn-back" href="javascript:history.back()">← Retour</a>
+  <h1>Hôtel Sissiman</h1>
+  <p>Bobo-Dioulasso, Burkina Faso</p>
+</header>
+
+<div class="container">
+
+  <h2>Description</h2>
+  <p>Hôtel 4 étoiles moderne avec services premium, jardin luxuriant, ambiance paisible. Parfait pour professionnels et séjours confort haut de gamme.</p>
+  <div class="images-section">
+    <img src="E.jpg" alt="Hôtel Sissiman façade">
+    <img src="D.jpg" alt="Vue de nuit">
+    <img src="H.jpg" alt="Réception moderne">
+  </div>
+
+  <h2>Logement</h2>
+  <p>Chambres standard, deluxe, suites présidentielles. Confort total : climatisation, TV, bureau, balcon, coffre, room service.</p>
+  <div class="images-section">
+    <img src="A.jpg" alt="Chambre deluxe">
+    <img src="B.jpg" alt="Suite présidentielle">
+    <img src="C.jpg" alt="Salle de bain design">
+  </div>
+
+  <h2>Restauration</h2>
+  <p>Restaurant chic avec buffet et service à la carte. Cuisine africaine, européenne, menus diététiques disponibles. Bar lounge à disposition.</p>
+  <div class="images-section">
+    <img src="V.jpg" alt="Salle du restaurant">
+    <img src="O.jpg" alt="Buffet complet">
+    <img src="H.jpg" alt="Cocktails au bar">
+  </div>
+
+  <h2>Position géographique</h2>
+  <p>15 min de l’aéroport. Quartier calme, accès facile aux ministères, à la gare et au centre commercial Dafra Center.</p>
+  <div class="images-section">
+    <img src="G.jpg" alt="carte locale">
+    <img src="Q.jpg" alt="Entrée sécurisée">
+    <img src="F.jpg" alt="Vue satellite">
+  </div>
+
+  <h2>Prix</h2>
+  <p>À partir de 90 000 FCFA (~137 €) par nuit. Petit-déjeuner inclus. Réductions pour long séjour.</p>
+
+  <a class="btn-reserver" href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/inscription.html">Réserver maintenant</a>
+
+  <footer>
+    <h2>Contact</h2>
+    <p><strong>Téléphone :</strong> +226 70 00 00 00</p>
+    <p><strong>Email :</strong> contact@hotel-exemple.com</p>
+    <p>
+      <strong>Réseaux sociaux :</strong>
+      <a href="https://facebook.com/hotel-exemple" target="_blank">Facebook</a> |
+      <a href="https://twitter.com/hotel-exemple" target="_blank">Twitter</a>
+    </p>
+  </footer>
+</div>
+
+</body>
+</html>

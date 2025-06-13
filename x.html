@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu avec Animation Moderne</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Style CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* fond global blanc */
+        }
+
+        /* Zone bleue brillante au-dessus du titre */
+        .header-wrapper {
+            background-color: #4a6eff;
+            padding: 40px 20px 0 20px;
+        }
+
+        .header-title {
+            background-color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-title h1 {
+            font-size: 36px;
+            color: #333;
+            margin: 0;
+        }
+
+        /* NAVBAR */
+        #navbar-animmenu {
+            background: #4a6eff;
+            overflow: hidden;
+            position: relative;
+            padding: 10px 0;
+            z-index: 1;
+        }
+
+        #navbar-animmenu .hori-selector {
+            position: absolute;
+            height: 100%;
+            top: 10px;
+            left: 0;
+            background-color: #fff;
+            border-radius: 15px 15px 0 0;
+            transition: all 0.4s ease-in-out;
+            z-index: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        #navbar-animmenu ul {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        #navbar-animmenu ul li {
+            list-style-type: none;
+            flex: 1;
+            text-align: center;
+        }
+
+        #navbar-animmenu ul li a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            transition: color 0.3s ease-in-out;
+            font-size: 16px;
+        }
+
+        #navbar-animmenu ul li.active a {
+            color: #4a6eff;
+        }
+
+        /* Section principale avec filigrane sur fond blanc */
+        .watermarked-section {
+            position: relative;
+            background-color: #ffffff; /* Fond blanc */
+            overflow: hidden;
+            padding: 40px;
+            min-height: 300px;
+            text-align: center;
+        }
+
+        .watermarked-section .filigrane {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.05; /* Plus visible mais discret */
+            z-index: 0;
+            animation: clignote-subtil 5s infinite alternate;
+            pointer-events: none;
+            max-width: 80vw;
+            width: 600px;
+            height: auto;
+        }
+
+        @keyframes clignote-subtil {
+            from { opacity: 0.04; }
+            to { opacity: 0.08; }
+        }
+
+        @media (max-width: 768px) {
+            .watermarked-section .filigrane {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête -->
+    <div class="header-wrapper">
+        <div class="header-title">
+            <h1>BIENVENUE DANS LA CITE DE SIA</h1>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <div id="navbar-animmenu">
+        <div class="hori-selector"></div>
+        <ul class="main-navbar">
+            <li class="active"><a href="#"><i class="fas fa-home"></i> MENU</a></li>
+            <li><a href="#"><i class="fas fa-landmark"></i> PATRIMOINE</a></li>
+            <li><a href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/herberg.html"><i class="fas fa-hotel"></i> RESERVATION D'HOTEL</a></li>
+            <li><a href="#"><i class="fas fa-images"></i> GALERIE</a></li>
+        </ul>
+    </div>
+
+    <!-- Section principale avec filigrane -->
+    <div class="watermarked-section">
+        <img src="logo.jpg" alt="Filigrane Logo" class="filigrane">
+        <div style="position: relative; z-index: 1;">
+            <p>Bienvenue dans la zone de contenu principale (fond blanc avec filigrane discret).</p>
+        </div>
+    </div>
+
+    <!-- Script d'animation navbar -->
+    <script>
+        $(document).ready(function () {
+            function animateSelector() {
+                var activeItem = $('#navbar-animmenu .active');
+                var selector = $('.hori-selector');
+                var itemPos = activeItem.position();
+                var itemWidth = activeItem.innerWidth();
+
+                selector.css({
+                    left: itemPos.left + "px",
+                    width: itemWidth + "px"
+                });
+            }
+
+            // Lancer l'animation initiale
+            setTimeout(animateSelector, 100);
+
+            // Sur clic
+            $("#navbar-animmenu").on("click", "li", function () {
+                $('#navbar-animmenu ul li').removeClass("active");
+                $(this).addClass("active");
+                animateSelector();
+            });
+
+            // Sur redimensionnement
+            $(window).on("resize", function () {
+                setTimeout(animateSelector, 300);
+            });
+        });
+    </script>
+
+</body>
+</html>

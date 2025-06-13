@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hôtel L’Auberge - Détail</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f0f4fa;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #0066cc;
+      color: white;
+      padding: 20px 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      background: rgba(0, 102, 204, 0.1);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-btn i {
+      margin-right: 6px;
+    }
+
+    .back-btn:hover {
+      background: rgba(0, 102, 204, 0.25);
+      transform: translateX(-2px);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      color: #0066cc;
+      margin-top: 40px;
+    }
+
+    .images-section {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .images-section img {
+      width: 32%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #ddd;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .images-section img.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn-reserver {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-reserver:hover {
+      background-color: #218838;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      color: #555;
+    }
+
+    .watermark {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 120px;
+      color: rgba(0, 102, 204, 0.05);
+      font-weight: bold;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 20s infinite linear;
+      white-space: nowrap;
+    }
+
+    @keyframes float {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      .images-section {
+        flex-direction: column;
+      }
+
+      .images-section img {
+        width: 100%;
+      }
+
+      .watermark {
+        font-size: 60px;
+      }
+
+      .back-btn {
+        top: 15px;
+        left: 10px;
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="watermark">L’AUBERGE</div>
+
+  <header>
+    <a href="javascript:void(0);" onclick="history.back();" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Retour
+    </a>
+    <h1>Hôtel L’Auberge</h1>
+    <p>Bobo-Dioulasso, Burkina Faso</p>
+  </header>
+
+  <div class="container">
+    <h2>Description</h2>
+    <p>Hôtel historique en plein centre de Bobo, ouvert depuis 1967. Parfait pour les voyageurs cherchant confort, tradition et accessibilité à pied aux sites culturels.</p>
+    <div class="images-section">
+      <img src="x8.jpg" alt="Hôtel L’Auberge façade">
+      <img src="ki.jpg" alt="Vue extérieure">
+      <img src="L.jpg" alt="Hall d’entrée">
+    </div>
+
+    <h2>Logement</h2>
+    <p>Chambres simples, doubles et suites. Climatisation, TV satellite, Wi-Fi gratuit, mini-bar. Ambiance calme et sécurité assurée.</p>
+    <div class="images-section">
+      <img src="ki.jpg" alt="Chambre simple">
+      <img src="x2.jpg" alt="Suite deluxe">
+      <img src="S.jpg" alt="Salle de bain">
+    </div>
+
+    <h2>Restauration</h2>
+    <p>Restaurant avec menu local et international, petit-déjeuner continental inclus. Bar lounge à disposition en soirée.</p>
+    <div class="images-section">
+      <img src="N.jpg" alt="Salle de restaurant">
+      <img src="y1.jpg" alt="Buffet petit déjeuner">
+      <img src="I.jpg" alt="Plat local">
+    </div>
+
+    <h2>Position géographique</h2>
+    <p>Situé au centre-ville, à quelques pas du marché central, des musées et des gares routières. Accès facile en taxi ou à pied.</p>
+    <div class="images-section">
+      <img src="x8.jpg" alt="Plan d’accès">
+      <img src="G.jpg" alt="Quartier autour">
+      <img src="ji.jpg" alt="Vue aérienne">
+    </div>
+
+    <h2>Prix</h2>
+    <p>À partir de 33 000 FCFA (~50 €) par nuit. Tarifs selon chambre et saison.</p>
+
+    <a class="btn-reserver" href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/inscription.html">Réserver maintenant</a>
+
+    <h2>Contact</h2>
+    <p><strong>Téléphone :</strong> +226 70 00 00 00</p>
+    <p><strong>Email :</strong> contact@hotel-exemple.com</p>
+    <p>
+      <strong>Réseaux sociaux :</strong>
+      <a href="https://facebook.com/hotel-exemple" target="_blank">Facebook</a> |
+      <a href="https://twitter.com/hotel-exemple" target="_blank">Twitter</a>
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2025 Hôtel L’Auberge
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      $('.images-section img').each(function (i, el) {
+        setTimeout(() => $(el).addClass('fade-in'), i * 150);
+      });
+    });
+  </script>
+</body>
+</html>

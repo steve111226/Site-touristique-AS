@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Patrimoine de Bobo-Dioulasso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
+      color: #222;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+    .filigrane {
+      position: fixed;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.07;
+      z-index: 0;
+      pointer-events: none;
+      width: 530px;
+      max-width: 85vw;
+      height: auto;
+      filter: grayscale(60%) contrast(120%);
+      user-select: none;
+    }
+    @media (max-width: 900px) {.filigrane { width: 330px; }}
+    @media (max-width: 600px) {.filigrane { width: 180px; }}
+
+    .fixed-top-bluezone {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      min-width: 100vw;
+      background: #5276ff;
+      z-index: 100;
+      box-shadow: 0 6px 24px rgba(44,62,80,0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      border-radius: 0 0 36px 36px;
+    }
+    .header-title-white {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px 54px;
+      box-shadow: 0 4px 18px rgba(82,118,255,0.10);
+      font-size: 2.3rem;
+      color: #23272c;
+      font-weight: 700;
+      margin: 36px 0 0 0;
+      letter-spacing: 1px;
+      display: inline-block;
+      text-align: center;
+      z-index: 110;
+    }
+    @media (max-width: 700px) {
+      .fixed-top-bluezone { border-radius: 0 0 18px 18px; }
+      .header-title-white { padding: 10px 7vw; font-size: 1.12rem; margin-top: 16px; }
+    }
+
+    /* NAVBAR animé */
+    .nav-tabs-bg {
+      width: 100%;
+      background: #5276ff;
+      display: flex;
+      justify-content: center;
+      margin: 26px 0 0 0;
+      padding: 0;
+      position: relative;
+      z-index: 120;
+      min-height: 56px;
+      border-radius: 0 0 36px 36px;
+      box-shadow: 0 6px 24px rgba(44,62,80,0.07);
+    }
+    .main-navbar {
+      display: flex;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      position: relative;
+      background: none;
+      justify-content: stretch;
+      align-items: flex-end;
+    }
+    .main-navbar li {
+      flex: 1 1 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      position: relative;
+      z-index: 2;
+      min-width: 0;
+    }
+    .main-navbar li a {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 14px 0 12px 0;
+      font-size: 1.08rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 16px 16px 0 0;
+      background: transparent;
+      box-sizing: border-box;
+      transition: color 0.3s, background 0.3s;
+      position: relative;
+      z-index: 2;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .main-navbar li.active a,
+    .main-navbar li a:focus,
+    .main-navbar li a:hover {
+      color: #5276ff;
+      background: #fff;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(82,118,255,0.04);
+    }
+    .main-navbar li a i {
+      margin-right: 7px;
+      font-size: 1.1em;
+    }
+    /* Animation slider */
+    .hori-selector {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      height: calc(100% - 20px);
+      background: #fff;
+      border-radius: 15px 15px 0 0;
+      transition: all 0.4s cubic-bezier(.44,1.5,.47,1);
+      z-index: 1;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      will-change: left, width;
+      pointer-events: none;
+      border-bottom: none;
+    }
+    @media (max-width: 700px) {
+      .main-navbar { flex-direction: column; max-width: 99vw; }
+      .main-navbar li a, .main-navbar li.active a { border-radius: 10px; padding: 9px 0 7px 0; font-size: 0.99rem; }
+      .hori-selector { border-radius: 10px; }
+    }
+
+    .patrimoine-page {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 56px auto 0 auto;
+      padding: 40px 10px 50px 10px;
+    }
+    .page-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.7rem;
+      color: #2c3e50;
+    }
+    .sites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px 36px;
+      margin-top: 24px;
+      justify-items: stretch;
+      align-items: stretch;
+      width: 100%;
+    }
+    .site-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 100%;
+      min-width: 0;
+    }
+    .site-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 16px 44px rgba(82,118,255,0.09);
+    }
+    .site-image {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 14px 14px 0 0;
+      border-bottom: 3px solid #5276ff;
+      background: #eee;
+    }
+    .site-info {
+      padding: 20px 15px 18px 15px;
+      text-align: left;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .site-info h3 {
+      margin-bottom: 10px;
+      color: #2c3e50;
+      font-size: 1.15em;
+    }
+    .site-info p {
+      color: #555;
+      margin-bottom: 12px;
+      font-size: 0.98rem;
+    }
+    .voir-site-btn {
+      display: inline-block;
+      background: #5276ff;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+      margin: 22px 0 16px 0;
+      align-self: flex-start;
+    }
+    .voir-site-btn:hover {
+      background: #405ad9;
+      transform: scale(1.07);
+    }
+    @media (max-width: 1200px) {
+      .patrimoine-page { max-width: 98vw; }
+      .sites-grid { gap: 28px 10px; }
+    }
+    @media (max-width: 700px) {
+      .sites-grid {
+        grid-template-columns: 1fr;
+        gap: 20px 0;
+      }
+      .site-card { max-width: 98vw; }
+    }
+    footer {
+      background-color: #f8f9fa;
+      color: #666;
+      text-align: center;
+      padding: 15px 0;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+      font-size: 0.99em;
+      z-index: 10;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <!-- Filigrane -->
+  <img src="logo.jpg" alt="Filigrane" class="filigrane">
+
+  <!-- Bandeau bleu header sticky -->
+  <div class="fixed-top-bluezone">
+    <div class="header-title-white">
+      PATRIMOINE DE BOBO-DIOULASSO
+    </div>
+    <!-- Navbar animée -->
+    <div class="nav-tabs-bg">
+      <ul class="main-navbar">
+        <li><a href="index.html"><i class="fas fa-home"></i> MENU</a></li>
+        <li class="active"><a href="patrimoine.html"><i class="fas fa-landmark"></i> PATRIMOINE</a></li>
+        <li><a href="hebergement.html"><i class="fas fa-hotel"></i> HÉBERGEMENT</a></li>
+        <li><a href="Galeries.html"><i class="fas fa-images"></i> GALERIE</a></li>
+      </ul>
+      <div class="hori-selector"></div>
+    </div>
+  </div>
+  <section class="patrimoine-page">
+    <h2 class="page-title">Découvrez les sites emblématiques de notre patrimoine</h2>
+    <div class="sites-grid">
+      <!-- Maison Lobi -->
+      <div class="site-card">
+        <img src="images (16).jpeg" alt="Maison Lobi" class="site-image">
+        <div class="site-info">
+          <h3>Maison Lobi</h3>
+          <p>La Maison Lobi est un exemple typique de l’architecture traditionnelle du peuple Lobi, caractérisée par des murs en terre, des toits plats et une organisation intérieure pensée pour la sécurité et la vie communautaire. Chaque espace y a une fonction précise, témoignant du mode de vie, des croyances et de l’ingéniosité de ce peuple du sud-ouest du Burkina Faso.</p>
+        </div>
+        <a href="Lobi.html" class="voir-site-btn">Voir le site</a>
+      </div>
+      <!-- Grande Mosquée -->
+      <div class="site-card">
+        <img src="images (3).jpeg" alt="Grande Mosquée" class="site-image">
+        <div class="site-info">
+          <h3>Grande Mosquée</h3>
+          <p>Symbole majeur de Bobo-Dioulasso, la Grande Mosquée est un chef-d’œuvre de l’architecture soudanaise avec ses murs en banco, ses tours élancées et ses poutres de bois apparentes. Construite au XIXe siècle, elle témoigne d’un savoir-faire ancestral et reste un lieu de culte et de rassemblement pour la communauté musulmane de la ville.</p>
+        </div>
+        <a href="bobo.html" class="voir-site-btn">Voir le site</a>
+      </div>
+      <!-- Mausolée de Guimbi Ouattara -->
+      <div class="site-card">
+        <img src="arton52.jpg" alt="Mausolée Guimbi Ouattara" class="site-image">
+        <div class="site-info">
+          <h3>Le mausolée de Guimbi Ouattara</h3>
+          <p>Ce mausolée rend hommage à Guimbi Ouattara, figure emblématique et femme influente de l’histoire de Bobo-Dioulasso. Son lieu de repos témoigne de son rôle dans la défense et la diplomatie de la cité face aux enjeux coloniaux et locaux au début du XXe siècle.</p>
+        </div>
+        <a href="Guimbi.html" class="voir-site-btn">Voir le site</a>
+      </div>
+      <!-- Dômes de Fabedougou -->
+      <div class="site-card">
+        <img src="P2q42nTdoJZBTk94hmpc.jpg" alt="Dômes de Fabedougou" class="site-image">
+        <div class="site-info">
+          <h3>Domes de Fabedougou</h3>
+          <p>Les Dômes de Fabedougou sont d’impressionnantes formations rocheuses naturelles, sculptées par l’érosion depuis des millions d’années. Leur aspect en coupoles et leur alignement offrent un spectacle unique, faisant de ce site un incontournable pour les amoureux de la nature et de la géologie.</p>
+        </div>
+        <a href="Domes de Fabedougou.html" class="voir-site-btn">Voir le site</a>
+      </div>
+      <!-- Silures sacrés de Dafra -->
+      <div class="site-card">
+        <img src="images (8).jpeg" alt="Silures sacrés de Dafra" class="site-image">
+        <div class="site-info">
+          <h3>Les Silure  sacrés de Dafra</h3>
+          <p>À Dafra, les silures sacrés vivent dans un plan d’eau entouré de légendes. Ces poissons géants, protégés et respectés, sont au cœur de rites traditionnels et de sacrifices offerts pour la prospérité et la fertilité. Le site attire aussi bien les pèlerins que les visiteurs curieux de découvrir les croyances animistes locales.</p>
+        </div>
+        <a href="Dafra.html" class="voir-site-btn">Voir le site</a>
+      </div>
+      <!-- Vieux marché -->
+      <div class="site-card">
+        <img src="img_9192.webp" alt="Vieux marché de Bobo-Dioulasso" class="site-image">
+        <div class="site-info">
+          <h3>Le vieux marché de Bobo-Dioulasso</h3>
+          <p>Le vieux marché est un lieu emblématique où se mêlent couleurs, senteurs et sons. On y découvre l’authenticité des échanges, l’artisanat local, et une ambiance animée qui reflète la richesse culturelle de la ville. C’est un passage obligé pour tous ceux qui veulent s’imprégner du quotidien bobolais.</p>
+        </div>
+        <a href="marche.html" class="voir-site-btn">Voir le site</a>
+      </div>
+
+    <!-- muse provincial -->
+      <div class="site-card">
+        <img src="unnamed (6).jpg" alt="Vieux marché de Bobo-Dioulasso" class="site-image">
+        <div class="site-info">
+          <h3>Le Musée Provincial du Houet</h3>
+          <p>Pour les amateurs d’histoire et de culture, le Musée Provincial du Houet est une étape incontournable. Situé au cœur de Bobo-Dioulasso, il abrite une précieuse collection d’objets retraçant l’histoire et les traditions des peuples du sud-ouest burkinabè : masques rituels, instruments de musique, outils anciens et artefacts ethnographiques y racontent la diversité et la profondeur du patrimoine local.</p>
+     </div>
+        <a href="le musee provincial de Houet.html" class="voir-site-btn">Voir le site</a>
+      </div>
+     <!-- scene musicale -->
+      <div class="site-card">
+        <img src="FB_IMG_1632815039020.jpg" alt="artiste" class="site-image">
+        <div class="site-info">
+          <h3>La scène musicale de Bobo-Dioulasso</h3>
+          <p>Véritable capitale culturelle, Bobo-Dioulasso rayonne par sa scène musicale dynamique. Dans les rues, les bars, et lors des grands festivals, la musique rythme la vie de la ville : balafon, djembé, kora, reggae, afrobeat et hip-hop font vibrer toutes les générations. De célèbres artistes comme Victor Démé, Faso Kombat ou Idak Bassavé sont issus de cette ville où la créativité ne s’arrête jamais.
+          </p>
+        </div>
+        <a href="La Scène Musicale de Bobo-Dioulasso.html" class="voir-site-btn">Voir le site</a>
+      </div>
+
+      <!-- Cascades de Karfiguela -->
+      <div class="site-card">
+        <img src="images (31).jpeg" alt="Cascades de Karfiguela" class="site-image">
+        <div class="site-info">
+          <h3>Les cascades de Karfiguela</h3>
+          <p>Les cascades de Karfiguela sont un site naturel enchanteur, reconnu pour ses chutes d’eau successives et ses bassins propices à la baignade. Leur environnement verdoyant et rafraîchissant en fait un lieu très apprécié des habitants et des visiteurs en quête de détente et de beauté naturelle.</p>
+        </div>
+        <a href="les Cascades de Karfiguela.html" class="voir-site-btn">Voir le site</a>
+      </div>
+      <!-- Village artisanal -->
+      <div class="site-card">
+        <img src="arton83528-c8364.jpg" alt="Village artisanal de Bobo-Dioulasso" class="site-image">
+        <div class="site-info">
+          <h3>Le village artisanal de Bobo-Dioulasso</h3>
+          <p>Ce lieu rassemble de nombreux artisans qui perpétuent des savoir-faire ancestraux : sculpture sur bois, poterie, tissage, bijouterie, etc. Le village artisanal est l’endroit idéal pour découvrir la richesse de l’artisanat local et repartir avec un souvenir authentique de la région.</p>
+        </div>
+        <a href="Village Artisanal.html" class="voir-site-btn">Voir le site</a>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2025 Ville de Bobo-Dioulasso. Tous droits réservés.</p>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      function animateSelector() {
+        var $nav = $('.nav-tabs-bg');
+        var $activeItem = $nav.find('.main-navbar .active');
+        var $selector = $nav.find('.hori-selector');
+        if ($activeItem.length && $selector.length) {
+          var itemPos = $activeItem.position();
+          var itemWidth = $activeItem.outerWidth();
+          $selector.css({
+            left: itemPos.left + "px",
+            width: itemWidth + "px"
+          });
+        }
+      }
+      setTimeout(animateSelector, 100);
+      $(".main-navbar li").click(function () {
+        $(".main-navbar li").removeClass("active");
+        $(this).addClass("active");
+        animateSelector();
+      });
+      $(window).on("resize", function () {
+        setTimeout(animateSelector, 300);
+      });
+      $(".main-navbar li").hover(
+        function () {
+          var $nav = $('.nav-tabs-bg');
+          var $selector = $nav.find('.hori-selector');
+          var itemPos = $(this).position();
+          var itemWidth = $(this).outerWidth();
+          $selector.css({
+            left: itemPos.left + "px",
+            width: itemWidth + "px"
+          });
+        },
+        function () {
+          animateSelector();
+        }
+      );
+    });
+  </script>
+</body>
+</html>
