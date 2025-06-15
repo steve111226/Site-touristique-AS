@@ -67,10 +67,6 @@
       text-align: center;
       z-index: 110;
     }
-    @media (max-width: 700px) {
-      .fixed-top-bluezone { border-radius: 0 0 18px 18px; }
-      .header-title-white { padding: 10px 7vw; font-size: 1.12rem; margin-top: 16px; }
-    }
 
     .nav-tabs-bg {
       width: 100%;
@@ -151,11 +147,6 @@
       pointer-events: none;
       border-bottom: none;
     }
-    @media (max-width: 700px) {
-      .main-navbar { flex-direction: column; max-width: 99vw; }
-      .main-navbar li a, .main-navbar li.active a { border-radius: 10px; padding: 9px 0 7px 0; font-size: 0.99rem; }
-      .hori-selector { border-radius: 10px; }
-    }
 
     .accueil-page {
       position: relative;
@@ -177,88 +168,37 @@
       box-shadow: 0 2px 14px rgba(44,62,80,0.06);
       padding: 25px 24px;
     }
-    .texte-section h2 {
-      margin-top: 0;
-      font-size: 1.42em;
-      color: #405ad9;
-      margin-bottom: 14px;
-    }
-    .texte-section p {
-      margin: 0 0 12px 0;
-      font-size: 1.07em;
-      color: #222;
-    }
-    .image-space {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 15px;
-    }
-    .image-space img {
-      width: calc(25% - 9px);
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-      box-shadow: 0 2px 8px rgba(44,62,80,0.09);
-      cursor: pointer;
-      background: #e9eefc;
-      object-fit: cover;
-      aspect-ratio: 4/3;
-    }
-    .image-space img:active {
-      transform: scale(1.13);
-      box-shadow: 0 0 15px #5276ff77;
-      border: 3px solid #5276ff;
-    }
-    .accueil-sidebar {
-      flex: 1 1 33%;
-      background: #f0f8ff;
-      border-left: 3px solid #5276ff;
-      border-radius: 13px;
-      padding: 24px;
-      margin-top: 8px;
-      font-weight: bold;
-      color: #405ad9;
-      font-size: 1.1em;
-      height: fit-content;
-      box-shadow: 0 2px 12px rgba(44,62,80,0.05);
-    }
-    .accueil-sidebar h2 {
-      color: #2c3e50;
-      margin-top: 0;
-      text-align: center;
-      font-size: 1.21em;
-      margin-bottom: 14px;
-    }
-    @media (max-width: 1000px) {
-      .accueil-page { flex-direction: column; gap: 18px; }
-      .accueil-sidebar { margin-top: 0; }
-    }
+
     @media (max-width: 700px) {
-      .accueil-page { flex-direction: column; padding: 18px 3vw; }
-      .texte-section { padding: 13px 5vw; }
-      .accueil-sidebar { padding: 12px 3vw; }
-      .image-space img { width: 46%; }
-    }
-    footer {
-      background-color: blue;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-      border-top: 1px solid #ddd;
-      margin-top: 40px;
-      font-size: 0.99em;
-      z-index: 10;
-      position: relative;
+      .fixed-top-bluezone {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        z-index: 999;
+        border-radius: 0 0 18px 18px;
+      }
+      .nav-tabs-bg {
+        flex-direction: row !important;
+        overflow-x: auto;
+        border-radius: 0 0 18px 18px;
+      }
+      .main-navbar {
+        flex-direction: row !important;
+        width: 100%;
+      }
+      .main-navbar li {
+        flex: 1 0 auto;
+      }
+      body {
+        padding-top: 140px;
+      }
     }
   </style>
 </head>
 <body>
   <img src="logo.jpg" alt="Filigrane" class="filigrane">
-
   <div class="fixed-top-bluezone">
-    <div class="header-title-white">
-      BIENVENUE À BOBO-DIOULASSO
-    </div>
+    <div class="header-title-white">BIENVENUE À BOBO-DIOULASSO</div>
     <div class="nav-tabs-bg">
       <ul class="main-navbar">
         <li class="active"><a href="index.html"><i class="fas fa-home"></i> ACCUEIL</a></li>
@@ -270,77 +210,10 @@
     </div>
   </div>
 
-  <section class="accueil-page">
-    <div class="accueil-main">
-      <div class="texte-section">
-        <h2>Présentation de la ville</h2>
-        <p>Si vous cherchez une ville <strong>pleine de charme, de couleurs et de rythmes</strong>, alors ouvrez grand les bras : <strong>Bobo-Dioulasso</strong> vous attend avec le sourire !</p>
-      </div>
-      <div class="texte-section">
-        <p>Située dans le <strong>sud-ouest du Burkina Faso</strong>, à environ <strong>360 kilomètres de Ouagadougou</strong>, Bobo (comme l’appellent affectueusement ses habitants) est bien plus qu’une simple ville : c’est <strong>le cœur battant de la culture burkinabè</strong>, une ville joyeuse, authentique, et profondément attachante.</p>
-        <div class="image-space">
-         
-          <img src="imm.jpg" alt="">
-          <img src="iji.jpg" alt="">
-          <img src="FB_IMG_1632815039020.jpg" alt="">
-        </div>
-      </div>
-      <div class="texte-section">
-        <p>Nichée dans la <strong>région verdoyante des Hauts-Bassins</strong>, Bobo-Dioulasso s’étend sur environ <strong>136 km²</strong>, à une altitude d’environ <strong>445 mètres</strong>. Elle profite d’un climat agréable et d’un environnement naturel paisible, entre rivières, arbres géants et terres rouges. Un vrai petit bijou !</p>
-        <div class="image-space">
-          <img src="imao.jpg" alt="">
-          
-          <img src="im.jpg" alt="">
-          <img src="ii.jpg" alt="">
-        </div>
-      </div>
-      <div class="texte-section">
-        <p>À Bobo, chaque coin de rue raconte une histoire. Ici, les traditions ne dorment jamais : elles <strong>dansent, chantent, sculptent</strong> et sourient à tous ceux qui veulent les découvrir. Berceau de la <strong>musique traditionnelle</strong>, la ville résonne au son des balafons, des tambours et des voix puissantes des griots. Les festivals comme le <strong>FESTIBO</strong> vous feront vibrer au rythme des masques et des danses !</p>
-        <div class="image-space">
-          <img src="hu.jpg" alt="">
-          <img src="ho.jpg" alt="">
-          <img src="ill.jpg" alt="">
-          <img src="pi.jpg" alt="">
-        </div>
-      </div>
-      <div class="texte-section">
-        <p>La ville regorge de sites magnifiques à visiter : la <strong>Grande Mosquée</strong>, le <strong>vieux quartier de Kibidwé</strong>, le <strong>musée de la ville</strong>, <strong>la Guinguette</strong> ou encore le <strong>village de Koumi</strong> avec ses peintures murales traditionnelles. Chaque site vous plonge dans une nouvelle ambiance.</p>
-        <div class="image-space">
-          <img src="pe.jpg" alt="">
-          
-          <img src="ima.jpg" alt="">
-          <img src="omi.jpg" alt="">
-        </div>
-      </div>
-      <div class="texte-section">
-        <p>Bobo, c’est aussi une ville accueillante et bien équipée. Des <strong>hôtels chaleureux</strong>, une <strong>gastronomie locale</strong>, des <strong>guides passionnés</strong>, et même un <strong>aéroport international</strong> pour venir facilement.</p>
-        <div class="image-space">
-          <img src="E.jpg" alt="">
-          <img src="O.jpg" alt="">
-          <img src="ip.jpg" alt="">
-          <img src="M.jpg" alt="">
-        </div>
-      </div>
-      <div class="texte-section">
-        <p>Que vous soyez en famille, en couple ou entre amis, une chose est sûre : <strong>Bobo-Dioulasso vous marquera à jamais</strong>. Entre découvertes, sourires et émotions, vous repartirez le cœur rempli de joie.<br><br>Alors, prêt(e) pour l’aventure ?<br><strong>Bobo vous ouvre les bras. Et ici, chaque sourire est un trésor.</strong></p>
-        <div class="image-space">
-          <img src="im.jpg" alt="">
-          <img src="imp.jpg" alt="">
-          <img src="iv.jpg" alt="">
-          <img src="imag.jpg" alt="">
-        </div>
-      </div>
-    </div>
-    <aside class="accueil-sidebar">
-      <h2>Les Ethnies Rencontrées</h2>
-      <p>Préparez-vous à découvrir un vrai melting-pot culturel ! À Bobo-Dioulasso, vous rencontrerez les groupes ethniques fascinants comme les Bobo, les Dioula, les Sénoufo, les Mossi et bien d’autres.</p>
-      <p>Chaque ethnie apporte ses traditions, ses danses, ses costumes éclatants et sa musique entraînante qui fait vibrer la ville au rythme de la vie.</p>
-      <p>Vous serez émerveillé par la richesse culturelle et la convivialité incroyable de ces peuples, qui rendent Bobo-Dioulasso unique et inoubliable. Une expérience authentique vous attend à chaque coin de rue !</p>
-      <p>Ici, chaque rencontre est une fête, et chaque sourire un pont entre les cultures.</p>
-    </aside>
-  </section>
+  <!-- CONTENU ICI -->
+
   <footer>
-    <p>&copy BASSOLE STEVE YIPENE AQUILAS  | COMPAORE YOUSSOUF JUNIOR | HEMA SAMATOU.</p>
+    <p>&copy BASSOLE STEVE YIPENE AQUILAS  | COMPAORE YOUSSOUF JUNIOR |HEMA SAMATOU.</p>
   </footer>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
