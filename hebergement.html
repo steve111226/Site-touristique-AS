@@ -22,7 +22,6 @@
       overflow-x: hidden;
     }
 
-    /* Filigrane fixé au fond */
     .filigrane {
       position: fixed;
       top: 50%;
@@ -36,12 +35,10 @@
       filter: grayscale(60%) contrast(120%);
       animation: clignote-subtil 5s infinite alternate;
     }
-
     @keyframes clignote-subtil {
       from { opacity: 0.10; }
       to   { opacity: 0.15; }
     }
-
     @media (max-width: 768px) {
       .filigrane {
         width: 300px;
@@ -52,23 +49,21 @@
     /* Ruban et menu animé */
     .header-wrapper {
       background-color: #4a6eff;
-      padding: 40px 20px 0 20px;
+      padding: 22px 20px 0 20px;
     }
-
     .header-title {
       background-color: rgba(255,255,255,0.85);
       text-align: center;
-      padding: 20px;
+      padding: 13px 8px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      max-width: 800px;
+      max-width: 700px;
       margin: auto;
       position: relative;
       z-index: 2;
     }
-
     .header-title h1 {
-      font-size: 36px;
+      font-size: 28px;
       color: #333;
       margin: 0;
     }
@@ -79,19 +74,28 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      padding: 10px 0;
+      padding: 3px 0;
+      min-height: 36px;
     }
 
+    /* --- Animation bande blanche sous l'onglet actif --- */
+    #navbar-animmenu {
+      position: relative;
+    }
     #navbar-animmenu .hori-selector {
       position: absolute;
-      height: 100%;
-      top: 10px;
       left: 0;
-      background-color: #fff;
-      border-radius: 15px 15px 0 0;
-      transition: all 0.4s ease-in-out;
-      z-index: 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      bottom: 0;
+      height: 4px;
+      background: #fff;
+      border-radius: 2px 2px 0 0;
+      transition: all 0.4s cubic-bezier(.44,1.5,.47,1);
+      z-index: 1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      will-change: left, width;
+      pointer-events: none;
+      border-bottom: none;
+      top: auto;
     }
 
     #navbar-animmenu ul {
@@ -100,31 +104,34 @@
       margin: 0;
       padding: 0;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
-
     #navbar-animmenu ul li {
       list-style-type: none;
       flex: 1;
       text-align: center;
     }
-
     #navbar-animmenu ul li a {
       color: rgba(255,255,255,0.85);
       text-decoration: none;
       display: block;
-      padding: 10px 0;
-      font-size: 16px;
+      padding: 7px 0 5px 0;
+      font-size: 15px;
       transition: color 0.3s ease-in-out;
+      position: relative;
+      z-index: 2;
     }
-
     #navbar-animmenu ul li.active a {
       color: #4a6eff;
+      font-weight: bold;
+      background: #fff;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 2px 8px rgba(82,118,255,0.04);
     }
 
     /* Section principale */
     .content {
-      padding: 40px 20px;
+      padding: 32px 20px;
       position: relative;
       z-index: 1;
     }
@@ -170,6 +177,14 @@
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
+    @media (max-width: 600px) {
+      .header-title h1 { font-size: 18px; }
+      .header-title { padding: 7px 2vw; }
+      .content { padding: 16px 2vw; }
+      .hotel { padding: 11px 5px; }
+      #navbar-animmenu ul li a { font-size: 13px; }
+    }
   </style>
 </head>
 <body>
@@ -179,7 +194,7 @@
   <!-- En-tête -->
   <div class="header-wrapper">
     <div class="header-title">
-      <h1>HÉBERGEMENT de BOBO-DIOULASSO</h1>
+      <h1>Bienvenu dans la ville de SIA</h1>
     </div>
   </div>
 
@@ -202,7 +217,7 @@
       <img src="x8.jpg" alt="hotel-auberge">
       <p>Chambres modernes avec vue sur le jardin. Accès au spa et au restaurant gastronomique.</p>
       <p class="prix">À partir de 85€ par nuit</p>
-      <a class="btn-voir-plus" href="oberge.html">Voir plus</a>
+      <a class="btn-voir-plus" href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/oberge.html">Voir plus</a>
     </div>
 
     <!-- Hôtel 2 -->
@@ -211,7 +226,7 @@
       <img src="E.jpg" alt="Hôtel Sissiman">
       <p>Idéalement situé près des commerces et musées. Parfait pour les courts séjours.</p>
       <p class="prix">À partir de 65€ par nuit</p>
-      <a class="btn-voir-plus" href="sissiman.html">Voir plus</a>
+      <a class="btn-voir-plus" href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/sissiman.html">Voir plus</a>
     </div>
 
     <!-- Hôtel 3 -->
@@ -220,7 +235,7 @@
       <img src="x1.jpg" alt="Hôtel-villa-rose">
       <p>Prestige 5 étoiles avec piscine intérieure, suite présidentielle et service premium.</p>
       <p class="prix">À partir de 100€ par nuit</p>
-      <a class="btn-voir-plus" href="hotel villa rosa.html">Voir plus</a>
+      <a class="btn-voir-plus" href="file:///C:/Users/USER/Desktop/Nouveau%20dossier/Nouveau%20dossier%20(2)/hotel%20villa%20rosa.html">Voir plus</a>
     </div>
 
   <!-- Script d’animation menu -->
@@ -230,7 +245,7 @@
         var activeItem = $('#navbar-animmenu .active');
         var selector = $('.hori-selector');
         var itemPos = activeItem.position();
-        var itemWidth = activeItem.innerWidth();
+        var itemWidth = activeItem.outerWidth();
         selector.css({
           left: itemPos.left + "px",
           width: itemWidth + "px"
@@ -248,6 +263,22 @@
       $(window).on("resize", function () {
         setTimeout(animateSelector, 300);
       });
+
+      // Animation lors du survol
+      $("#navbar-animmenu ul li").hover(
+        function () {
+          var selector = $('.hori-selector');
+          var itemPos = $(this).position();
+          var itemWidth = $(this).outerWidth();
+          selector.css({
+            left: itemPos.left + "px",
+            width: itemWidth + "px"
+          });
+        },
+        function () {
+          animateSelector();
+        }
+      );
     });
   </script>
 
